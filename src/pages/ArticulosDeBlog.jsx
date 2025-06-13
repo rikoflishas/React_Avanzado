@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Card, CardContent, Typography } from '@mui/material'; //visual
+import './publicacion.css'; //visual
 
 export default function ArticulosDeBlog() {
-    const [ publicaciones, setPublicaciones ] = useState([]);
+    const [ articulos, setArticulos ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const [ error, setError ] = useState(null);
 
@@ -11,17 +13,31 @@ export default function ArticulosDeBlog() {
             if  (!response.ok)  throw new Error("Error en la petición de artículos del Blog");
             return response.json();
         })
-        .then( data => setPublicaciones(data) )
+        .then( data => setArticulos(data) )
         .catch( err => setError(err.message) )
         .finally( () => setIsLoading(false) )
     }, [])
 
-    if (isLoading) return <p>Cargando publicaciones...</p>
+    if (isLoading) return <p>Cargando artículos del blog...</p>
     if (error) return <p>Error: {error}</p> 
 
   return (
-    <div>ArticulosDeBlog</div>
-  )
+    <div>
+      <h2>Articulos De Blog</h2>
+      <Card>
+        {articulos.map(articulo => (
+          <CardContent>
+            <Typography gutterBottom variant='h5' component="div">
+              {articulo.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {articulo.body}
+            </Typography>
+          </CardContent>
+        ))}
+      </Card>
+    </div>
+  );
 }
 
 // export default ArticulosDeBlog
