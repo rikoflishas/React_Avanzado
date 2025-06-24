@@ -4,7 +4,7 @@ import { useState } from "react";
 import Header from "./pages/components/Header"
 import Login from "./pages/Login";
 import ContenidoPrivado from "./pages/ContenidoPrivado";
-import { UserProvider } from "./pages/components/UserContext"
+import { UserProvider } from "./pages/UserContext"
 import { Box, Button, Container } from "@mui/material";
 
 function App() {

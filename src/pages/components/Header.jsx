@@ -14,7 +14,7 @@ export default  function Header(){
                 </Box>
                 { user && (
                     <Button color="inherit" onClick={logout}>
-                        Cerrar Sesión
+                        Cerrar Sesión x_x
                     </Button>
                 )}
             </Toolbar>

@@ -5,7 +5,7 @@ const UserContext = createContext();//libreria createContext dentro de variable 
 export function UserProvider({ children }) {
     const [user, setUser] = useState(null);// a veces children viene vacio
 
-    const login = () => setUser({ name: "Benjamín"});
+    const login = (username = "Benjamín") => setUser({ name: username });
     const logout = () => setUser(null);
 
     return(
